@@ -1,41 +1,46 @@
-let students = require("../Data/taskData");
+const tasks = require("../Data/taskData");
 
-const getAllStudents = () => students;
+const getAllTask = () => tasks;
 
-const getStudentById = (id) => students.find((s) => s.id == id);
+const getTaskById = (id) => tasks.find((t) => t.id == id);
 
-const addStudent = (title, completed, priority) => {
-  const newStudent = {
-    id: students.length + 1,
+const addTask = (title, priority) => {
+  const newTask = {
+    id: tasks.length + 1,
     title,
-    completed,
+    completed: false,
     priority,
   };
 
-  students.push(newStudent);
-  return newStudent;
+  tasks.push(newTask);
+  return newTask;
 };
 
-const deleteStudent = (id) => {
-  const initialLength = students.length;
+const deleteTask = (id) => {
+  const initialLength = tasks.length;
 
-  students = students.filter((s) => s.id !== id);
+  const filteredTasks = tasks.filter((t) => t.id !== id);
 
-  return students.length < initialLength;
+  tasks.length = 0;
+  tasks.push(...filteredTasks);
+
+  return tasks.length < initialLength;
 };
-const updateStudent = (id, updatedData) => {
-  const student = students.find((s) => s.id === id);
 
-  if (!student) return null;
+const updateTask = (id, updatedTask) => {
+  const existingTask = tasks.find((t) => t.id === id);
 
-  Object.assign(student, updatedData);
+  if (!existingTask) return null;
 
-  return student;
+  Object.assign(existingTask, updatedTask);
+
+  return existingTask;
 };
+
 module.exports = {
-  getAllStudents,
-  getStudentById,
-  addStudent,
-  deleteStudent,
-  updateStudent,
+  getAllTask,
+  getTaskById,
+  addTask,
+  deleteTask,
+  updateTask,
 };

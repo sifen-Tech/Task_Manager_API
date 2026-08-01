@@ -1,38 +1,58 @@
-const studentService = require("../services/taskService");
+const taskService = require("../services/taskService");
+
 const getAll = (req, res) => {
-  const result = studentService.getAllStudents();
+  const result = taskService.getAllTask();
   res.json(result);
 };
+
 const getOne = (req, res) => {
   const id = parseInt(req.params.id);
-  const student = studentService.getStudentById(id);
-  if (!student) return res.status(404).json({ message: "Student not found" });
-  res;
+
+  const task = taskService.getTaskById(id);
+
+  if (!task) {
+    return res.status(404).json({ message: "Task is not found" });
+  }
+
+  res.json(task);
 };
+
 const create = (req, res) => {
-  const { title, completed, priority } = req.body;
-  if (!title || completed === undefined || !priority)
-    return res.status(400).json({ message: "Missing data" });
-  const newStudent = studentService.addStudent(title, completed, priority);
-  res.status(201).json(newStudent);
+  const { title, priority } = req.body;
+
+  if (!title || !priority) {
+    return res.status(400).json({ message: "Missing Task" });
+  }
+
+  const newTask = taskService.addTask(title, priority);
+
+  res.status(201).json(newTask);
 };
+
 const remove = (req, res) => {
   const id = parseInt(req.params.id);
-  const deleted = studentService.deleteStudent(id);
-  if (!deleted) return res.status(404).json({ message: "Student not found" });
-  res.json({ message: "Student deleted" });
+
+  const deleted = taskService.deleteTask(id);
+
+  if (!deleted) {
+    return res.status(404).json({ message: "Task not found" });
+  }
+
+  res.json({ message: "Task deleted" });
 };
+
 const update = (req, res) => {
   const id = parseInt(req.params.id);
 
-  const updatedStudent = studentService.updateStudent(id, req.body);
+  const updatedTask = taskService.updateTask(id, req.body);
 
-  if (!updatedStudent) {
-    return res.status(404).json({ message: "Student not found" });
+  if (!updatedTask) {
+    return res.status(404).json({ message: "Task not found" });
   }
 
-  res.json(updatedStudent);
+  res.json(updatedTask);
 };
+
 module.exports = {
   getAll,
   getOne,

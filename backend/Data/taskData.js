@@ -1,4 +1,4 @@
-let students = [
+let tasks = [
   {
     id: 1,
     title: "Finish lecture 2 homework",
@@ -19,4 +19,4 @@ let students = [
     priority: "high",
   },
 ];
-module.exports = students;
+module.exports = tasks;
