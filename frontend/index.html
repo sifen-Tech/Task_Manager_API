@@ -1,17 +1,31 @@
 <!doctype html>
-
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Task_Manager_API</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <input type="text" placeholder="Enter your Task" />
-    <button onclick="fetchTask()">SubmitTask</button>
-    <script src="app.js" async defer></script>
+    <div class="container">
+      <h1>Task Manager</h1>
+
+      <form id="task-form">
+        <input
+          type="text"
+          id="title"
+          placeholder="New task title..."
+          required
+        />
+        <select id="priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit">Add Task</button>
+      </form>
+      <ul id="task-list"></ul>
+    </div>
+    <script src="app.js"></script>
   </body>
 </html>

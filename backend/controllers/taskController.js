@@ -23,6 +23,13 @@ const create = (req, res) => {
   if (!title || !priority) {
     return res.status(400).json({ message: "Missing Task" });
   }
+  const validPriorities = ["low", "medium", "high"];
+
+  if (!validPriorities.includes(priority)) {
+    return res.status(400).json({
+      message: "Priority must be low, medium, or high",
+    });
+  }
 
   const newTask = taskService.addTask(title, priority);
 
