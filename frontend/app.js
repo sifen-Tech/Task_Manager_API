@@ -1,4 +1,4 @@
-const API_URL = "https://task-manager-api-qrem.onrender.com";
+const API_URL = "https://task-manager-api-qrem.onrender.com/api/tasks";
 
 const taskForm = document.getElementById("task-form");
 const titleInput = document.getElementById("title");
