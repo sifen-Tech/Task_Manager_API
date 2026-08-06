@@ -69,15 +69,6 @@ Task-Manager/
 |___image.png
 ```
 
-The frontend includes:
-
-- Dark blue-black background
-- Soft pistachio accent colors
-- Task cards
-- Priority display
-- Completion status
-- Action buttons
-
 ---
 
 # Future Improvements

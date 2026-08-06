@@ -11,9 +11,13 @@ app.use(express.json());
 app.use("/api/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
-  res.send(`port is running...`);
+  res.json({
+    success: true,
+    message: appName,
+    port: port,
+  });
 });
 
 app.listen(port, () => {
-  console.log(`${appName} is running at http://localhost:${port}`);
+  console.log(`${appName} is running on port ${port}`);
 });
